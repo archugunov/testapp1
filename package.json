@@ -3,12 +3,12 @@
   "private": true,
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds",
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css"
+    "build:css": "bunx tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css"
   },
   "devDependencies": {
-    "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^8.0.13",
-    "esbuild": "^0.25.4",
-    "tailwindcss": "^4.1.7"
+    "esbuild": "^...",
+    "@hotwired/turbo-rails": "^...",
+    "@hotwired/stimulus": "^...",
+    "tailwindcss": "^..."
   }
 }

@@ -1,7 +1,8 @@
 {
-  "name": "app",
-  "private": true
+  "name": "testapp1",
+  "private": true,
   "scripts": {
-  "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds"
-}
+    "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds"
+  },
+  "dependencies": {}
 }

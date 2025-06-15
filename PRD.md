@@ -21,19 +21,19 @@ The top of the website includes a concise, benefit-driven hero section that clea
 ### 📸 Step 1: Upload Clothing Photos
 - Upload up to 5 photos of your item
 - Responsive thumbnail previews
-- Automatically detects item category (e.g. shirt, pants, dress)
+- Automatically detects item category (e.g. shirt, pants, dress) with the use of OpenAI API
 
 ### 📏 Step 2: Fill Out Measurements
 - Shows only the relevant fields based on the item type (auto-defined by the AI), e.g.:
   - Shirts: Length, Chest, Waist, Sleeve
   - Pants: Length, Waist, Inseam, Hip
   - Dresses: Length, Bust, Waist, Hip
-- Pre-filled inputs, fully editable
+- Inputs are in cm and are fully editable 
 
 ### 📝 Step 3: Get a Listing (with Watermark Notice)
 - AI-generated description
 - Suggested price range (based on comparable items)
-- Measurement visual template with your data (includes a watermark: "Created with Vinted Assistant – vintedassistant.com")
+- Measurement visual template with your data from the step 2 (includes a watermark: "Created with Vinted Assistant – vintedassistant.com")
 - Downloadable as **PNG** (suitable for mobile gallery saving)
 - One-click copy of the description text
 

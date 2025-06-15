@@ -1,0 +1,34 @@
+<%
+  # Build CSS classes
+  card_classes = ['card', local_assigns[:class]].compact.join(' ')
+%>
+
+<div class="<%= card_classes %>">
+  <% if local_assigns[:title] || local_assigns[:description] %>
+    <div class="card-header">
+      <% if local_assigns[:title] %>
+        <h3 class="card-title">
+          <%= local_assigns[:title] %>
+        </h3>
+      <% end %>
+      
+      <% if local_assigns[:description] %>
+        <p class="card-description">
+          <%= local_assigns[:description] %>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <% if block_given? %>
+    <div class="card-content">
+      <%= yield %>
+    </div>
+  <% end %>
+  
+  <% if local_assigns[:footer] %>
+    <div class="card-footer">
+      <%= local_assigns[:footer] %>
+    </div>
+  <% end %>
+</div> 

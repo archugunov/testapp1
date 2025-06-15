@@ -1,0 +1,96 @@
+<%
+  # Default values
+  input_type = local_assigns[:type] || 'text'
+  input_name = local_assigns[:name]
+  input_id = local_assigns[:id] || input_name
+  input_value = local_assigns[:value]
+  placeholder = local_assigns[:placeholder]
+  required = local_assigns[:required] || false
+  disabled = local_assigns[:disabled] || false
+  
+  # Build CSS classes
+  input_classes = if input_type == 'textarea'
+    ['textarea', local_assigns[:class]].compact.join(' ')
+  else
+    ['input', local_assigns[:class]].compact.join(' ')
+  end
+  
+  # Build data attributes for Stimulus
+  data_attributes = {}
+  if local_assigns[:controller]
+    data_attributes[:controller] = local_assigns[:controller]
+  end
+  
+  if local_assigns[:action]
+    data_attributes[:action] = local_assigns[:action]
+  end
+  
+  if local_assigns[:target]
+    data_attributes[:target] = local_assigns[:target]
+  end
+  
+  # Merge any additional data attributes
+  if local_assigns[:data]
+    data_attributes.merge!(local_assigns[:data])
+  end
+%>
+
+<div class="space-y-2">
+  <% if local_assigns[:label] %>
+    <label for="<%= input_id %>" class="label">
+      <%= local_assigns[:label] %>
+      <% if required %>
+        <span class="text-red-500 ml-1">*</span>
+      <% end %>
+    </label>
+  <% end %>
+  
+  <% if input_type == 'textarea' %>
+    <%= text_area_tag input_name, 
+                      input_value,
+                      id: input_id,
+                      class: input_classes,
+                      placeholder: placeholder,
+                      required: required,
+                      disabled: disabled,
+                      data: data_attributes,
+                      rows: local_assigns[:rows] || 4 %>
+  <% elsif input_type == 'select' %>
+    <%= select_tag input_name,
+                   options_for_select(local_assigns[:options] || [], input_value),
+                   id: input_id,
+                   class: input_classes,
+                   required: required,
+                   disabled: disabled,
+                   data: data_attributes,
+                   include_blank: local_assigns[:include_blank] %>
+  <% else %>
+    <%= tag.input type: input_type,
+                  name: input_name,
+                  id: input_id,
+                  value: input_value,
+                  class: input_classes,
+                  placeholder: placeholder,
+                  required: required,
+                  disabled: disabled,
+                  data: data_attributes,
+                  accept: (local_assigns[:accept] if input_type == 'file'),
+                  multiple: (local_assigns[:multiple] if input_type == 'file'),
+                  capture: (local_assigns[:capture] if input_type == 'file'),
+                  min: (local_assigns[:min] if input_type == 'number'),
+                  max: (local_assigns[:max] if input_type == 'number'),
+                  step: (local_assigns[:step] if input_type == 'number') %>
+  <% end %>
+  
+  <% if local_assigns[:error] %>
+    <p class="text-sm text-red-600 mt-1">
+      <%= local_assigns[:error] %>
+    </p>
+  <% end %>
+  
+  <% if local_assigns[:hint] %>
+    <p class="text-sm text-muted-foreground mt-1">
+      <%= local_assigns[:hint] %>
+    </p>
+  <% end %>
+</div> 

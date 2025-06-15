@@ -1,0 +1,234 @@
+<div class="container mx-auto px-4 py-8 space-y-12">
+  <!-- Header -->
+  <div class="text-center">
+    <h1 class="text-4xl font-bold text-slate-900 mb-4">
+      Vinted Assistant UI Components
+    </h1>
+    <p class="text-lg text-slate-600">
+      A shadcn-vue inspired component library for Rails
+    </p>
+  </div>
+
+  <!-- Buttons Section -->
+  <%= render 'components/ui/card', title: 'Buttons', description: 'Various button styles and sizes' do %>
+    <div class="space-y-6">
+      <!-- Primary Buttons -->
+      <div>
+        <h4 class="text-lg font-semibold mb-3">Primary Buttons</h4>
+        <div class="flex flex-wrap gap-3">
+          <%= render 'components/ui/button', variant: 'primary', size: 'sm' do %>
+            Small
+          <% end %>
+          
+          <%= render 'components/ui/button', variant: 'primary' do %>
+            Default
+          <% end %>
+          
+          <%= render 'components/ui/button', variant: 'primary', size: 'lg' do %>
+            Large
+          <% end %>
+          
+          <%= render 'components/ui/button', variant: 'primary', disabled: true do %>
+            Disabled
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Secondary Buttons -->
+      <div>
+        <h4 class="text-lg font-semibold mb-3">Secondary & Outline</h4>
+        <div class="flex flex-wrap gap-3">
+          <%= render 'components/ui/button', variant: 'secondary' do %>
+            Secondary
+          <% end %>
+          
+          <%= render 'components/ui/button', variant: 'outline' do %>
+            Outline
+          <% end %>
+          
+          <%= render 'components/ui/button', variant: 'ghost' do %>
+            Ghost
+          <% end %>
+          
+          <%= render 'components/ui/button', variant: 'link' do %>
+            Link
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Button as Link -->
+      <div>
+        <h4 class="text-lg font-semibold mb-3">Button Links</h4>
+        <div class="flex flex-wrap gap-3">
+          <%= render 'components/ui/button', href: '#', variant: 'primary' do %>
+            Primary Link
+          <% end %>
+          
+          <%= render 'components/ui/button', href: '#', variant: 'outline' do %>
+            Outline Link
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Cards Section -->
+  <%= render 'components/ui/card', title: 'Cards', description: 'Flexible card layouts for content organization' do %>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Simple Card -->
+      <%= render 'components/ui/card', title: 'Simple Card', description: 'A basic card with title and description' do %>
+        <p class="text-slate-600">
+          This is the card content area. You can put any content here including text, images, forms, or other components.
+        </p>
+      <% end %>
+
+      <!-- Card with Footer -->
+      <%
+        footer_content = capture do %>
+          <div class="flex gap-2">
+            <%= render 'components/ui/button', variant: 'primary', size: 'sm' do %>
+              Save
+            <% end %>
+            <%= render 'components/ui/button', variant: 'outline', size: 'sm' do %>
+              Cancel
+            <% end %>
+          </div>
+        <% end
+      %>
+      
+      <%= render 'components/ui/card', 
+                 title: 'Card with Footer',
+                 description: 'Card with action buttons in footer',
+                 footer: footer_content do %>
+        <p class="text-slate-600">
+          This card demonstrates how to use the footer area for action buttons or additional information.
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <!-- Inputs Section -->
+  <%= render 'components/ui/card', title: 'Form Inputs', description: 'Various input types with labels and validation' do %>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Text Input -->
+      <%= render 'components/ui/input',
+                 type: 'text',
+                 name: 'demo_text',
+                 label: 'Text Input',
+                 placeholder: 'Enter some text...',
+                 hint: 'This is a helpful hint' %>
+
+      <!-- Email Input -->
+      <%= render 'components/ui/input',
+                 type: 'email',
+                 name: 'demo_email',
+                 label: 'Email Address',
+                 placeholder: 'you@example.com',
+                 required: true %>
+
+      <!-- Number Input -->
+      <%= render 'components/ui/input',
+                 type: 'number',
+                 name: 'demo_number',
+                 label: 'Measurements (cm)',
+                 placeholder: '70',
+                 min: 0,
+                 max: 200 %>
+
+      <!-- Select Input -->
+      <%= render 'components/ui/input',
+                 type: 'select',
+                 name: 'demo_select',
+                 label: 'Item Category',
+                 options: [['Shirt', 'shirt'], ['Dress', 'dress'], ['Pants', 'pants']],
+                 include_blank: 'Select category...' %>
+
+      <!-- Textarea -->
+      <%= render 'components/ui/input',
+                 type: 'textarea',
+                 name: 'demo_textarea',
+                 label: 'Description',
+                 placeholder: 'Enter description...',
+                 rows: 3 %>
+
+      <!-- File Input -->
+      <%= render 'components/ui/input',
+                 type: 'file',
+                 name: 'demo_file',
+                 label: 'Upload Photos',
+                 accept: 'image/*',
+                 multiple: true,
+                 capture: 'environment' %>
+    </div>
+  <% end %>
+
+  <!-- Progress Section -->
+  <%= render 'components/ui/card', title: 'Progress Indicators', description: 'Progress bars for uploads and processing' do %>
+    <div class="space-y-6">
+      <%= render 'components/ui/progress',
+                 value: 25,
+                 label: 'Upload Progress' %>
+
+      <%= render 'components/ui/progress',
+                 value: 75,
+                 label: 'Processing Images',
+                 status: 'Analyzing photos with AI...' %>
+
+      <%= render 'components/ui/progress',
+                 value: 100,
+                 label: 'Complete',
+                 status: 'Listing generated successfully!' %>
+    </div>
+  <% end %>
+
+  <!-- Mobile Demo Section -->
+  <div class="bg-slate-50 rounded-lg p-6">
+    <h2 class="text-2xl font-bold mb-4">Mobile-Optimized Demo</h2>
+    <p class="text-slate-600 mb-6">
+      All components are mobile-first and touch-friendly. Try resizing your browser or viewing on mobile.
+    </p>
+    
+    <div class="grid grid-cols-1 gap-4">
+      <%= render 'components/ui/button', variant: 'primary', class: 'w-full' do %>
+        📸 Upload Photos
+      <% end %>
+      
+      <%= render 'components/ui/button', variant: 'outline', class: 'w-full' do %>
+        📏 Add Measurements  
+      <% end %>
+      
+      <%= render 'components/ui/button', variant: 'secondary', class: 'w-full' do %>
+        📝 Generate Listing
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Usage Examples -->
+  <%= render 'components/ui/card', title: 'Usage Examples', description: 'How to use these components in your Rails views' do %>
+    <div class="space-y-4">
+      <div>
+        <h4 class="font-semibold mb-2">Button Component:</h4>
+        <pre class="bg-slate-100 p-3 rounded text-sm overflow-x-auto"><code>&lt;%= render 'components/ui/button', variant: 'primary', size: 'lg' do %&gt;
+  Click Me
+&lt;% end %&gt;</code></pre>
+      </div>
+      
+      <div>
+        <h4 class="font-semibold mb-2">Card Component:</h4>
+        <pre class="bg-slate-100 p-3 rounded text-sm overflow-x-auto"><code>&lt;%= render 'components/ui/card', title: 'My Card', description: 'Card description' do %&gt;
+  &lt;p&gt;Card content goes here&lt;/p&gt;
+&lt;% end %&gt;</code></pre>
+      </div>
+      
+      <div>
+        <h4 class="font-semibold mb-2">Input Component:</h4>
+        <pre class="bg-slate-100 p-3 rounded text-sm overflow-x-auto"><code>&lt;%= render 'components/ui/input',
+           type: 'text',
+           name: 'user_name',
+           label: 'Your Name',
+           placeholder: 'Enter name...',
+           required: true %&gt;</code></pre>
+      </div>
+    </div>
+  <% end %>
+</div> 

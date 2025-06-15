@@ -1,2 +1,128 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<div class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+  <!-- Hero Section -->
+  <div class="container mx-auto px-4 py-16">
+    <div class="text-center max-w-4xl mx-auto">
+      <h1 class="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
+        Vinted Listing 
+        <span class="text-blue-600">Assistant</span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-slate-600 mb-8 leading-relaxed">
+        Instantly generate complete, professional-grade Vinted listings from your clothing photos
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <%= render 'components/ui/button', variant: 'primary', size: 'lg', class: 'text-lg px-8 py-4' do %>
+          📸 Start Creating Listings
+        <% end %>
+        
+        <%= render 'components/ui/button', href: components_path, variant: 'outline', size: 'lg', class: 'text-lg px-8 py-4' do %>
+          🎨 View Components Demo
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Value Proposition Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <%= render 'components/ui/card', class: 'text-center' do %>
+        <div class="text-4xl mb-4">📸</div>
+        <h3 class="text-xl font-semibold mb-2">Upload Photos</h3>
+        <p class="text-slate-600">
+          Upload up to 5 photos of your clothing item. Our AI automatically detects the category.
+        </p>
+      <% end %>
+
+      <%= render 'components/ui/card', class: 'text-center' do %>
+        <div class="text-4xl mb-4">📏</div>
+        <h3 class="text-xl font-semibold mb-2">Add Measurements</h3>
+        <p class="text-slate-600">
+          Fill in relevant measurements. The form adapts based on your item category.
+        </p>
+      <% end %>
+
+      <%= render 'components/ui/card', class: 'text-center' do %>
+        <div class="text-4xl mb-4">📝</div>
+        <h3 class="text-xl font-semibold mb-2">Get Complete Listing</h3>
+        <p class="text-slate-600">
+          Receive AI-generated description, price suggestion, and downloadable measurement template.
+        </p>
+      <% end %>
+    </div>
+
+    <!-- Features Section -->
+    <div class="mt-24">
+      <%= render 'components/ui/card', title: 'What You Get', description: 'Everything you need for professional Vinted listings', class: 'max-w-4xl mx-auto' do %>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex items-start space-x-3">
+            <div class="bg-green-100 text-green-600 rounded-full p-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold">AI-Generated Descriptions</h4>
+              <p class="text-slate-600 text-sm">Professional, engaging item descriptions</p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3">
+            <div class="bg-green-100 text-green-600 rounded-full p-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold">Smart Price Suggestions</h4>
+              <p class="text-slate-600 text-sm">Market-based pricing recommendations</p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3">
+            <div class="bg-green-100 text-green-600 rounded-full p-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold">Visual Measurement Templates</h4>
+              <p class="text-slate-600 text-sm">Professional measurement guides</p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3">
+            <div class="bg-green-100 text-green-600 rounded-full p-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold">Mobile-Optimized</h4>
+              <p class="text-slate-600 text-sm">Perfect for on-the-go listing creation</p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Tech Demo Section -->
+    <div class="mt-16 text-center">
+      <h2 class="text-3xl font-bold text-slate-900 mb-6">
+        Built with Modern Rails
+      </h2>
+      <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+        This application showcases a modern Rails 8 component architecture with Tailwind CSS, 
+        inspired by shadcn-vue's design system.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <%= render 'components/ui/button', href: components_path, variant: 'outline', size: 'lg' do %>
+          🎨 Explore Component Library
+        <% end %>
+        
+        <%= render 'components/ui/button', href: '#', variant: 'ghost' do %>
+          📚 View Documentation
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

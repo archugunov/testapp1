@@ -1,0 +1,62 @@
+<%
+  # Default values
+  variant = local_assigns[:variant] || 'primary'
+  size = local_assigns[:size] || 'default'
+  disabled = local_assigns[:disabled] || false
+  type = local_assigns[:type] || 'button'
+  
+  # Build CSS classes based on variant
+  base_classes = 'btn'
+  variant_classes = case variant
+  when 'primary' then 'btn-primary'
+  when 'secondary' then 'btn-secondary'
+  when 'outline' then 'btn-outline'
+  when 'ghost' then 'btn-ghost'
+  when 'link' then 'btn-link'
+  else 'btn-primary'
+  end
+  
+  # Size classes
+  size_classes = case size
+  when 'sm' then 'btn-sm'
+  when 'lg' then 'btn-lg'
+  else ''
+  end
+  
+  # Combine all classes
+  button_classes = [base_classes, variant_classes, size_classes, local_assigns[:class]].compact.join(' ')
+  
+  # Build data attributes for Stimulus
+  data_attributes = {}
+  if local_assigns[:controller]
+    data_attributes[:controller] = local_assigns[:controller]
+  end
+  
+  if local_assigns[:action]
+    data_attributes[:action] = local_assigns[:action]
+  end
+  
+  # Merge any additional data attributes
+  if local_assigns[:data]
+    data_attributes.merge!(local_assigns[:data])
+  end
+  
+  # Convert data attributes to HTML format
+  data_html = data_attributes.map { |k, v| "data-#{k.to_s.gsub('_', '-')}=\"#{v}\"" }.join(' ')
+%>
+
+<% if local_assigns[:href] %>
+  <%= link_to local_assigns[:href], 
+              class: button_classes,
+              method: local_assigns[:method],
+              data: data_attributes do %>
+    <%= yield %>
+  <% end %>
+<% else %>
+  <button type="<%= type %>"
+          class="<%= button_classes %>"
+          <%= 'disabled' if disabled %>
+          <%= data_html.html_safe %>>
+    <%= yield %>
+  </button>
+<% end %> 

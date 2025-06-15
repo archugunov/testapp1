@@ -16,6 +16,8 @@ gem "stimulus-rails"
 gem "jbuilder"
 # Importmap for Rails [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
+# Add Tailwind CSS for styling [https://github.com/rails/tailwindcss-rails]
+gem "tailwindcss-rails"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"

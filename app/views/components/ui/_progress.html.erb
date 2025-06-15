@@ -1,0 +1,49 @@
+<%
+  # Default values
+  value = local_assigns[:value] || 0
+  max_value = local_assigns[:max] || 100
+  percentage = (value.to_f / max_value.to_f) * 100
+  
+  # Build CSS classes
+  progress_classes = ['progress', local_assigns[:class]].compact.join(' ')
+  
+  # Build data attributes for Stimulus
+  data_attributes = {}
+  if local_assigns[:controller]
+    data_attributes[:controller] = local_assigns[:controller]
+  end
+  
+  if local_assigns[:target]
+    data_attributes[:target] = local_assigns[:target]
+  end
+  
+  # Merge any additional data attributes
+  if local_assigns[:data]
+    data_attributes.merge!(local_assigns[:data])
+  end
+%>
+
+<div class="space-y-2">
+  <% if local_assigns[:label] %>
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-medium text-slate-700">
+        <%= local_assigns[:label] %>
+      </span>
+      <span class="text-sm text-slate-500">
+        <%= "#{percentage.round}%" %>
+      </span>
+    </div>
+  <% end %>
+  
+  <div class="<%= progress_classes %>" data-<%= data_attributes.map { |k, v| "#{k.to_s.gsub('_', '-')}=\"#{v}\"" }.join(' data-') %>>
+    <div class="progress-indicator" 
+         style="transform: translateX(-<%= 100 - percentage %>%)">
+    </div>
+  </div>
+  
+  <% if local_assigns[:status] %>
+    <p class="text-sm text-slate-600">
+      <%= local_assigns[:status] %>
+    </p>
+  <% end %>
+</div> 
